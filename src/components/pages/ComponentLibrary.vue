@@ -6,12 +6,13 @@
         v-for="id in [
           'mission',
           'install',
+          'standards',
           'buttons',
           'cards',
           'inputs',
+          'alerts',
           'release-notes',
         ]"
-        :key="id"
         :href="'#' + id"
         :class="{ active: activeSection === id }"
       >
@@ -43,7 +44,52 @@ npm install ../path/to/component-library
         <pre class="code-snippet">
 import { UIButton, UICard, UIInput } from '@your-org/component-library';
         </pre>
-        <p>Current version: <strong>v1.3.0</strong></p>
+        <p>Current version: <strong>v1.3.1</strong></p>
+      </section>
+
+      <!-- Standards -->
+      <section id="standards" class="component-section">
+        <h2>Standards</h2>
+
+        <!-- Color Palette -->
+        <div class="color-palette">
+          <h3>Color Palette</h3>
+          <div class="colors">
+            <div class="color" style="background: #6200ee">Primary #6200EE</div>
+            <div class="color" style="background: #03dac6; color: #111">
+              Secondary #03DAC6
+            </div>
+            <div class="color" style="background: #b00020">Danger #B00020</div>
+            <div class="color" style="background: #4caf50">Success #4CAF50</div>
+            <div class="color" style="background: #f5f5f5; color: #111">
+              Background #F5F5F5
+            </div>
+            <div class="color" style="background: #111">Text #111</div>
+          </div>
+        </div>
+
+        <!-- Typography -->
+        <div class="typography">
+          <h3>Typography</h3>
+          <p style="font-family: 'Inter', system-ui, sans-serif">
+            Primary font: <strong>Inter</strong>
+          </p>
+          <p style="font-family: 'Roboto', system-ui, sans-serif">
+            Secondary font (headings): <strong>Roboto</strong>
+          </p>
+          <p style="font-family: 'Fira Code', monospace">
+            Monospace font: <strong>Fira Code</strong>
+          </p>
+          <p>Standard weights: 400 (normal), 500 (medium), 700 (bold)</p>
+        </div>
+
+        <!-- Spacing -->
+        <div class="spacing-standards">
+          <h3>Spacing</h3>
+          <div>Base margin/padding unit: 8px</div>
+          <div>Small: 8px, Medium: 16px, Large: 24px</div>
+          <div>Component gaps: multiples of base unit (8px, 16px, 24px…)</div>
+        </div>
       </section>
 
       <!-- Buttons -->
@@ -76,19 +122,6 @@ import { UIButton, UICard, UIInput } from '@your-org/component-library';
             </tr>
           </tbody>
         </table>
-
-        <!-- Color Palette -->
-        <div class="color-palette">
-          <h3>Approved Colors</h3>
-          <div class="colors">
-            <div class="color" style="background: #6200ee">Primary #6200EE</div>
-            <div class="color" style="background: #03dac6">
-              Secondary #03DAC6
-            </div>
-            <div class="color" style="background: #b00020">Danger #B00020</div>
-            <div class="color" style="background: #4caf50">Success #4CAF50</div>
-          </div>
-        </div>
 
         <!-- Interactive Demo Panel -->
         <div class="component-panel">
@@ -304,10 +337,103 @@ import { UIButton, UICard, UIInput } from '@your-org/component-library';
         </div>
       </section>
 
+      <!-- Alerts -->
+      <section id="alerts" class="component-section">
+        <h2>Alerts</h2>
+
+        <!-- Props Table -->
+        <p class="component-props-header">Props available:</p>
+        <table class="props-table">
+          <thead>
+            <tr>
+              <th>Prop</th>
+              <th>Options / Default</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>severity</td>
+              <td>success / info / warning / error (default: info)</td>
+            </tr>
+            <tr>
+              <td>slot content</td>
+              <td>string (required content of the alert message)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Interactive Demo -->
+        <div class="component-panel">
+          <h3>Interactive Demo</h3>
+          <label>
+            Message:
+            <input v-model="alertText" placeholder="Enter alert text..." />
+          </label>
+
+          <label>
+            Severity:
+            <select v-model="alertSeverity">
+              <option
+                v-for="opt in alertOptions"
+                :key="opt.value"
+                :value="opt.value"
+              >
+                {{ opt.label }}
+              </option>
+            </select>
+          </label>
+
+          <div class="preview">
+            <UIAlert :severity="alertSeverity">{{ alertText }}</UIAlert>
+          </div>
+
+          <pre class="code-snippet">
+&lt;UIAlert severity="{{ alertSeverity }}"&gt;{{
+              alertText
+            }}&lt;/UIAlert&gt;</pre
+          >
+        </div>
+
+        <!-- Static Examples -->
+        <div class="component-panel">
+          <h3>Static Examples</h3>
+          <div class="component-variants">
+            <div>
+              <UIAlert severity="success">This is a success Alert.</UIAlert>
+              <pre class="code-snippet">
+&lt;UIAlert severity="success"&gt;This is a success Alert.&lt;/UIAlert&gt;</pre
+              >
+            </div>
+            <div>
+              <UIAlert severity="info">This is an info Alert.</UIAlert>
+              <pre class="code-snippet">
+&lt;UIAlert severity="info"&gt;This is an info Alert.&lt;/UIAlert&gt;</pre
+              >
+            </div>
+            <div>
+              <UIAlert severity="warning">This is a warning Alert.</UIAlert>
+              <pre class="code-snippet">
+&lt;UIAlert severity="warning"&gt;This is a warning Alert.&lt;/UIAlert&gt;</pre
+              >
+            </div>
+            <div>
+              <UIAlert severity="error">This is an error Alert.</UIAlert>
+              <pre class="code-snippet">
+&lt;UIAlert severity="error"&gt;This is an error Alert.&lt;/UIAlert&gt;</pre
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Release Notes -->
       <section id="release-notes" class="component-section">
         <h2>Release Notes</h2>
         <ul>
+          <li>
+            <strong>v1.3.1</strong> — Added Alerts component with interactive
+            demo and props table.
+          </li>
           <li>
             <strong>v1.3.0</strong> — Added sizes and disabled styling for
             Buttons, extra props for Cards and Inputs.
@@ -330,10 +456,11 @@ import { ref, onMounted, onBeforeUnmount } from "vue";
 import UIButton from "../ui-kit/Button.vue";
 import UICard from "../ui-kit/Card.vue";
 import UIInput from "../ui-kit/Input.vue";
+import UIAlert from "../ui-kit/Alert.vue";
 
 export default {
   name: "ComponentLibraryPage",
-  components: { UIButton, UICard, UIInput },
+  components: { UIButton, UICard, UIInput, UIAlert },
   setup() {
     const textInput = ref("");
     const anotherInput = ref("");
@@ -347,6 +474,16 @@ export default {
       { label: "Secondary", value: "#03DAC6" },
       { label: "Danger", value: "#B00020" },
       { label: "Success", value: "#4CAF50" },
+    ];
+
+    const alertText = ref("This is an info Alert.");
+    const alertSeverity = ref("info");
+
+    const alertOptions = [
+      { label: "Success", value: "success" },
+      { label: "Info", value: "info" },
+      { label: "Warning", value: "warning" },
+      { label: "Error", value: "error" },
     ];
 
     const sections = ref([]);
@@ -384,6 +521,9 @@ export default {
       isDisabled,
       buttonColors,
       activeSection,
+      alertText,
+      alertSeverity,
+      alertOptions,
     };
   },
 };
@@ -427,83 +567,44 @@ export default {
 .main-content {
   flex-grow: 1;
   padding: 2rem;
-  max-width: 900px;
-  margin: 0 auto;
 }
-
-/* Sections */
 .component-section {
-  background-color: #ffffff;
-  color: #111;
-  padding: 2rem;
-  border-radius: 8px;
-  margin-bottom: 2rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 4rem;
 }
 .component-section h2 {
   margin-bottom: 1rem;
 }
-
-/* Props table */
+.component-section pre.code-snippet {
+  background: #eaeaea;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin-top: 1rem;
+}
 .component-props-header {
+  margin-top: 1rem;
   font-weight: bold;
-  margin: 1rem 0 0.5rem;
-  color: #333;
+  margin-bottom: 0.5rem;
 }
 .props-table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 1.5rem;
-  font-size: 0.9rem;
+  margin-bottom: 1rem;
 }
 .props-table th,
 .props-table td {
   border: 1px solid #ccc;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 1rem;
   text-align: left;
 }
-.props-table th {
-  background-color: #f0f0f0;
-  font-weight: bold;
-}
-.props-table td {
-  background-color: #fafafa;
-}
-
-/* Component panels */
 .component-panel {
-  border: 1px solid #ddd;
-  background: #fafafa;
+  background: #fff;
   padding: 1rem;
   border-radius: 8px;
-  margin-bottom: 1.5rem;
-}
-
-/* Component variants layout */
-.component-variants {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 .component-variants > div {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-/* Code snippet */
-.code-snippet {
-  font-size: 0.85rem;
-  color: #555;
-  margin-top: 0.25rem;
-  background: #f0f0f0;
-  padding: 0.5rem;
-  border-radius: 4px;
-  overflow-x: auto;
-}
-
-/* Color palette */
-.color-palette {
   margin-bottom: 1rem;
 }
 .color-palette .colors {
@@ -511,41 +612,12 @@ export default {
   gap: 1rem;
   flex-wrap: wrap;
 }
-.color-palette .color {
-  padding: 0.5rem 0.75rem;
+.color {
+  padding: 0.5rem 1rem;
   border-radius: 4px;
-  color: #fff;
+  color: white;
   font-weight: bold;
-}
-
-/* Preview box */
-.preview {
-  margin-top: 1rem;
-}
-
-/* Hover animations */
-button {
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-button:disabled {
-  pointer-events: none;
-  transform: none !important;
-  box-shadow: none !important;
-  cursor: not-allowed;
-  opacity: 0.6;
-}
-
-.component-variants .card,
-UICard {
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-.component-variants .card:hover,
-UICard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  min-width: 100px;
+  text-align: center;
 }
 </style>
