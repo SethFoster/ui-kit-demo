@@ -7,10 +7,13 @@
 
 <style scoped>
 .demo-nav {
+  height: 56px;
   display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
   gap: 1rem;
-  padding: 1rem;
   background: #f5f5f5;
+  border-bottom: 1px solid #ddd;
 }
 
 .demo-nav a {

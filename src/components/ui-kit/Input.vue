@@ -19,9 +19,9 @@ export default {
   props: {
     modelValue: { type: String, default: "" },
     placeholder: { type: String, default: "" },
-    size: { type: String, default: "medium" }, // small / medium / large
-    disabled: { type: Boolean, default: false },
+    size: { type: String, default: "md" }, // sm / md / lg
     type: { type: String, default: "text" }, // text / email / password
+    disabled: { type: Boolean, default: false },
     error: { type: String, default: "" },
   },
 };
@@ -42,17 +42,17 @@ export default {
   transition: border-color 0.2s;
 }
 
-.ui-input.small {
+.ui-input.sm {
   font-size: 0.8rem;
   padding: 0.25rem 0.5rem;
   width: 150px;
 }
-.ui-input.medium {
+.ui-input.md {
   font-size: 1rem;
   padding: 0.5rem 1rem;
   width: 200px;
 }
-.ui-input.large {
+.ui-input.lg {
   font-size: 1.2rem;
   padding: 0.75rem 1.5rem;
   width: 250px;

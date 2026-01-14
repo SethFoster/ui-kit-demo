@@ -1,12 +1,8 @@
 <template>
   <button
-    :class="['ui-button', type, size]"
+    :class="['ui-button', type, mappedSize]"
     :disabled="disabled"
-    :style="{
-      backgroundColor: bgColor,
-      cursor: disabled ? 'not-allowed' : 'pointer',
-      opacity: disabled ? 0.6 : 1,
-    }"
+    :style="buttonStyle"
     @click="$emit('click')"
   >
     <slot>Button</slot>
@@ -18,9 +14,39 @@ export default {
   name: "UIButton",
   props: {
     type: { type: String, default: "primary" }, // primary / secondary / danger
-    size: { type: String, default: "medium" }, // small / medium / large
+    size: { type: String, default: "md" }, // sm / md / lg
     disabled: { type: Boolean, default: false },
-    bgColor: { type: String, default: "" }, // allows inline override
+    bgColor: { type: String, default: "" }, // optional inline override
+  },
+  computed: {
+    // Maps sm/md/lg to your CSS classes
+    mappedSize() {
+      switch (this.size) {
+        case "sm":
+          return "small";
+        case "md":
+          return "medium";
+        case "lg":
+          return "large";
+        default:
+          return "medium";
+      }
+    },
+    buttonStyle() {
+      if (this.disabled) {
+        return {
+          backgroundColor: "#ccc", // greyed out
+          color: "#666",
+          cursor: "not-allowed",
+          opacity: 1,
+        };
+      }
+      return {
+        backgroundColor: this.bgColor || "",
+        cursor: "pointer",
+        opacity: 1,
+      };
+    },
   },
 };
 </script>
@@ -62,7 +88,6 @@ export default {
   color: white;
 }
 
-/* Hover */
 .ui-button:not(:disabled):hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
