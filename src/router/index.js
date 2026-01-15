@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import ComponentLibraryPage from "../components/pages/ComponentLibrary.vue";
-import DemoPage from "@/components/demo/DemoPage.vue";
+import ComponentLibraryPage from "@/components/pages/ComponentLibraryPage.vue";
+import DemoPage from "@/components/pages/DemoPage.vue";
 
 const routes = [
   { path: "/", name: "Demo", component: DemoPage },

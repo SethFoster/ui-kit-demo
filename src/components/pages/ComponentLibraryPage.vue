@@ -34,19 +34,21 @@
             </a>
           </p>
 
-          <pre class="code-snippet">
-npm install @your-org/component-library
-          </pre>
+          <p><strong>NPM Install:</strong></p>
+          <div class="install-snippet">
+            npm install @your-org/component-library
+          </div>
 
-          <pre class="code-snippet">
-import { UIButton, UICard, UIInput } from '@your-org/component-library';
-          </pre>
+          <p><strong>Import Components:</strong></p>
+          <div class="install-snippet">
+            import { UIButton, UICard, UIInput } from
+            '@your-org/component-library';
+          </div>
 
           <p>Current version: <strong>v1.3.1</strong></p>
         </div>
       </section>
 
-      <!-- Standards -->
       <section id="standards" class="component-section">
         <div class="component-panel">
           <h2>Standards</h2>
@@ -55,33 +57,81 @@ import { UIButton, UICard, UIInput } from '@your-org/component-library';
             across all UI components to ensure consistency and accessibility.
           </p>
 
-          <h3>Color Palette</h3>
+          <!-- Heading examples -->
+          <div class="heading-examples">
+            <h1>H1 – Main Heading</h1>
+            <h2>H2 – Secondary Heading</h2>
+            <h3>H3 – Section Heading</h3>
+          </div>
 
+          <h3>Color Palette</h3>
           <div class="colors">
-            <div class="color primary">Primary</div>
-            <div class="color secondary">Secondary</div>
-            <div class="color danger">Danger</div>
-            <div class="color success">Success</div>
+            <div class="color primary">
+              Primary <span class="hex">#6200EE</span>
+            </div>
+            <div class="color secondary">
+              Secondary <span class="hex">#03DAC6</span>
+            </div>
+            <div class="color danger">
+              Danger <span class="hex">#B00020</span>
+            </div>
+            <div class="color success">
+              Success <span class="hex">#4CAF50</span>
+            </div>
           </div>
 
           <hr class="panel-divider" />
 
           <h3>Typography</h3>
-
           <ul class="typography-list">
-            <li>
-              <strong>Inter</strong>
-              <span>— Primary UI text</span>
+            <li
+              style="
+                font-family: 'Inter', sans-serif;
+                font-weight: 400;
+                font-size: 1rem;
+              "
+            >
+              Inter — Primary UI text
             </li>
-            <li>
-              <strong>Roboto</strong>
-              <span>— Headings and emphasis</span>
+            <li
+              style="
+                font-family: 'Roboto', sans-serif;
+                font-weight: 700;
+                font-size: 1.25rem;
+              "
+            >
+              Roboto — Headings and emphasis
             </li>
-            <li>
-              <strong>Fira Code</strong>
-              <span>— Code snippets and examples</span>
+            <li
+              style="
+                font-family: 'Fira Code', monospace;
+                font-weight: 400;
+                font-size: 0.9rem;
+              "
+            >
+              Fira Code — Code snippets and examples
             </li>
           </ul>
+
+          <hr class="panel-divider" />
+
+          <h3>Spacing / Padding</h3>
+          <div class="spacing-samples">
+            <div class="space-sample" style="height: 4px">4px</div>
+            <div class="space-sample" style="height: 8px">8px</div>
+            <div class="space-sample" style="height: 16px">16px</div>
+            <div class="space-sample" style="height: 24px">24px</div>
+          </div>
+
+          <hr class="panel-divider" />
+
+          <h3>Border Radius</h3>
+          <div class="radius-samples">
+            <div class="radius-sample" style="border-radius: 0px">0px</div>
+            <div class="radius-sample" style="border-radius: 4px">4px</div>
+            <div class="radius-sample" style="border-radius: 8px">8px</div>
+            <div class="radius-sample" style="border-radius: 12px">12px</div>
+          </div>
         </div>
       </section>
 
@@ -328,7 +378,7 @@ import { UIButton, UICard, UIInput } from '@your-org/component-library';
                 <td>success / info / warning / error (default: info)</td>
               </tr>
               <tr>
-                <td>slot</td>
+                <td>Message</td>
                 <td>Alert message content</td>
               </tr>
             </tbody>
@@ -696,6 +746,66 @@ export default {
   max-width: 1000px;
 }
 
+/* standards stuff */
+
+.heading-examples h1,
+.heading-examples h2,
+.heading-examples h3 {
+  margin: 0.5rem 0;
+  font-weight: 600;
+  color: #333;
+}
+
+.heading-examples h1 {
+  font-size: 2rem;
+}
+
+.heading-examples h2 {
+  font-size: 1.5rem;
+}
+
+.heading-examples h3 {
+  font-size: 1.2rem;
+}
+
+.spacing-samples {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end; /* aligns the blocks at the bottom */
+  margin-top: 1rem;
+}
+
+.space-sample {
+  width: 40px;
+  background: #6200ee; /* makes the block visible */
+  color: #fff;
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 1.5;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 2px; /* text sits nicely at the bottom */
+}
+
+.radius-samples {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.radius-sample {
+  width: 60px;
+  height: 60px;
+  background: #6200ee; /* so you can see the shape */
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+}
+
 /* typography stuff */
 
 .typography-list {
@@ -764,6 +874,19 @@ export default {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+
+.install-snippet {
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 20px;
+  height: 40px;
+  padding: 0 0.75rem;
+  width: 100%;
 }
 
 /* Code snippets */
