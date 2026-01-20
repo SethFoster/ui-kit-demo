@@ -2,24 +2,19 @@
   <div class="demo-page">
     <header class="demo-header">
       <h1>Legacy UI vs Component Library</h1>
-      <p>
-        Compare ad-hoc UI development (legacy) with reusable, intentional
-        components.
-      </p>
     </header>
 
-    <!-- BUTTONS -->
     <section class="demo-row">
       <h2>Buttons</h2>
       <div class="demo-grid">
-        <!-- Legacy -->
         <div class="demo-panel legacy">
           <h3>Legacy UI</h3>
           <div class="legacy-buttons">
-            <button class="xp-btn">OK</button>
-            <button class="red-btn">DELETE</button>
-            <button class="tiny-btn">Go</button>
+            <button class="legacy-btn v1">Save</button>
+            <button class="legacy-btn v2">Save</button>
+            <button class="legacy-btn v3">SAVE</button>
           </div>
+
           <ul class="notes bad">
             <li>Different styles per feature</li>
             <li>No shared hover or disabled rules</li>
@@ -27,7 +22,6 @@
           </ul>
         </div>
 
-        <!-- Component Library -->
         <div class="demo-panel uikit">
           <h3>Component Library</h3>
           <div class="kit-panel">
@@ -45,31 +39,16 @@
       </div>
     </section>
 
-    <!-- INPUTS -->
     <section class="demo-row">
       <h2>Inputs</h2>
       <div class="demo-grid">
-        <!-- Legacy -->
         <div class="demo-panel legacy">
           <h3>Legacy UI</h3>
-          <input
-            type="text"
-            placeholder="Enter text..."
-            style="padding: 4px 10px; margin-bottom: 8px; font-size: 0.9rem"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            style="padding: 6px; font-size: 0.8rem; width: 150px"
-          />
-          <ul class="notes bad">
-            <li>Inconsistent spacing and sizing</li>
-            <li>No validation or feedback</li>
-            <li>Different fonts and widths per input</li>
-          </ul>
+          <input class="legacy-input v1" placeholder="Email address" />
+          <input class="legacy-input v2" placeholder="email address" />
+          <input class="legacy-input v3" placeholder="Enter email" />
         </div>
 
-        <!-- Component Library -->
         <div class="demo-panel uikit">
           <h3>Component Library</h3>
           <div class="kit-panel">
@@ -88,33 +67,13 @@
       </div>
     </section>
 
-    <!-- ALERTS -->
     <section class="demo-row">
       <h2>Alerts</h2>
       <div class="demo-grid">
-        <!-- Legacy -->
         <div class="demo-panel legacy">
           <h3>Legacy UI</h3>
-          <div
-            style="
-              padding: 4px;
-              background: #fffae6;
-              border: 1px solid #ccc;
-              font-size: 0.85rem;
-            "
-          >
-            Info: Something happened
-          </div>
-          <div
-            style="
-              padding: 8px;
-              background: #ffe6e6;
-              border: 2px dashed #ccc;
-              font-size: 0.8rem;
-            "
-          >
-            Error: Something failed
-          </div>
+          <div class="legacy-alert v1">Something went wrong</div>
+          <div class="legacy-alert v2">Error: Something went wrong</div>
           <ul class="notes bad">
             <li>No consistent severity or style</li>
             <li>Manual spacing, colors, and borders</li>
@@ -122,7 +81,6 @@
           </ul>
         </div>
 
-        <!-- Component Library -->
         <div class="demo-panel uikit">
           <h3>Component Library</h3>
           <div class="kit-panel">
@@ -187,7 +145,6 @@ export default {
   flex-wrap: wrap;
 }
 
-/* Panels */
 .demo-panel {
   flex: 1 1 420px;
   padding: 1.5rem;
@@ -195,14 +152,12 @@ export default {
   min-height: 250px;
 }
 
-/* Legacy styles */
 .legacy {
   background: #c0c0c0;
   border: 2px solid #808080;
   font-family: "Tahoma", Arial, sans-serif;
 }
 
-/* Buttons / Inputs / Alerts layouts */
 .legacy-buttons,
 .kit-panel {
   display: flex;
@@ -210,28 +165,6 @@ export default {
   flex-wrap: wrap;
 }
 
-/* Legacy buttons */
-.xp-btn {
-  padding: 4px 12px;
-  border: 2px outset #fff;
-  background: linear-gradient(#f0f0f0, #c0c0c0);
-  font-size: 0.9rem;
-}
-
-.red-btn {
-  background: red;
-  color: white;
-  border: 1px solid black;
-  padding: 6px 10px;
-  font-weight: bold;
-}
-
-.tiny-btn {
-  font-size: 0.7rem;
-  padding: 2px 6px;
-}
-
-/* Notes */
 .notes {
   margin-top: 1rem;
   font-size: 0.85rem;
@@ -250,5 +183,98 @@ export default {
   margin-top: 3rem;
   font-style: italic;
   color: #555;
+}
+
+.legacy-btn {
+  background: #e5e5e5;
+  border: 1px solid #999;
+  color: #000;
+}
+
+.legacy-btn.v1 {
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: 2px;
+}
+
+.legacy-btn.v2 {
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border-radius: 8px;
+}
+
+.legacy-btn.v3 {
+  padding: 5px 10px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.legacy-btn.v1:hover {
+  background: #dcdcdc;
+}
+
+.legacy-btn.v2:hover {
+  background: #e0e0e0;
+  box-shadow: inset 0 0 0 1px #777;
+}
+
+.legacy-btn.v3:hover {
+  background: #cfcfcf;
+}
+
+.legacy-input {
+  border: 1px solid #999;
+  background: white;
+  color: #000;
+}
+
+.legacy-input.v1 {
+  padding: 6px 8px;
+  font-size: 0.9rem;
+  width: 220px;
+}
+
+.legacy-input.v2 {
+  padding: 8px 10px;
+  font-size: 0.95rem;
+  width: 220px;
+}
+
+.legacy-input.v3 {
+  padding: 6px 8px;
+  font-size: 0.85rem;
+  width: 200px;
+}
+
+.legacy-input.v1::placeholder {
+  color: #555;
+}
+
+.legacy-input.v2::placeholder {
+  color: #888;
+}
+
+.legacy-input.v3::placeholder {
+  color: #aaa;
+}
+
+.legacy-alert {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.legacy-alert.v1 {
+  padding: 6px 8px;
+  background: #fff7cc;
+  border: 1px solid #e0c97f;
+  font-size: 0.85rem;
+}
+
+.legacy-alert.v2 {
+  padding: 10px;
+  background: #fde8e8;
+  border: 1px solid #f5a5a5;
+  font-size: 0.9rem;
 }
 </style>
